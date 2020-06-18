@@ -45,7 +45,7 @@ def ActualUpdateEpisode(episode, episode_number, filename, show_slug):
 
 	for photo in request['included']['images']:
 		if photo['type'] == 'episode_image':
-			poster = photo['attributes']['large']
+			poster = photo['attributes']['small']
 			break
 
 	Log(dir(episode))
@@ -86,16 +86,16 @@ def Update(metadata, media, lang, force):
 
 	for photo in show_request['included']['images']:
 		if photo['attributes']['image_type'] == 'poster':
-			poster = photo['attributes']['large']
+			poster = photo['attributes']['small']
 
 		if photo['attributes']['image_type'] == 'hero':
 			background = photo['attributes']['large']
 
 		if photo['attributes']['image_type'] == 'logo':
-			banner = photo['attributes']['large']
+			banner = photo['attributes']['small']
 
 		if photo['attributes']['image_type'] == 'mobile_hero':
-			fallback = photo['attributes']['large']
+			fallback = photo['attributes']['small']
 
 	if poster == None:
 		poster = fallback
